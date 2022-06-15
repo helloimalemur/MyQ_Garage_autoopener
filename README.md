@@ -1,6 +1,5 @@
 # MyQ_Garage_autoopener
-monitors for presence of specified IP address, such as a cell phone,and opens MyQ Garage upon device connection.
-uses Cron to start and stop script within Screen session
+Monitors for presence of specified IP address, such as a cell phone, and opens MyQ Garage upon device connection. Uses Cron to start and stop script within Screen session.
 
 
 
