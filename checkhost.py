@@ -18,15 +18,16 @@ mb1 = ctime
 mb2 = dtime
 mbhost = "10.0.0.150"
 
-tom = 1
-mac = 1
-tm1 = ctime
-tm2 = dtime
+#tom = 1
+#mac = 1
+#tm1 = ctime
+#tm2 = dtime
 
 
 # 300 for 5 mins
-def timepassage(t1, t2):
-	if t1 - t2 > 600:
+timethres = 300
+def timepassage(t1, t2, ts):
+	if t1 - t2 > ts:
 		return True
 	else:
 		return False
@@ -65,28 +66,33 @@ def runcheck(host, c2, c1, ct, dt):
 	nc = check_host(host)
 	c2 = nc
 	if c1 != c2 and c2 == 1:
+		print("---------------------")
 		c1 = c2
 		ct = time.time()
 		if c2 == 1:
-			print("Device connected", c2)
+			print("Device connected", host)
 			printtime()
-			if timepassage(ct, dt):
+			if timepassage(ct, dt, timethres):
 				print("opening garage")
 				discord("opening")
 				printtime()
 				open_garage()
+				print("---------------------")
 			else:
 				print("15 mins has not passed")
 				#print("opening garage")
 				#discord("opening")
-				print(ct - dt)
+				print("Time passed:", ct - dt, " of", timethres)
 				printtime()
 				#open_garage()
+				print("---------------------")
 	elif c1 != c2 and c2 == 0:
+		print("---------------------")
 		c1 = c2
-		print("device disconnected")
+		print("device disconnected", host)
 		printtime()
 		dt = time.time()
+		print("---------------------")
 	else:
 		c1 = c2
 		if c2 == 1:
