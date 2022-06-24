@@ -13,7 +13,7 @@ jk2 = dtime
 jkhost = "10.0.0.203"
 
 matt = 1
-belesi = 1
+bell = 1
 mb1 = ctime
 mb2 = dtime
 mbhost = "10.0.0.150"
@@ -103,4 +103,4 @@ def runcheck(host, c2, c1, ct, dt):
 
 while True:
 	jkhost,james,koonts,jk1,jk2 = runcheck(jkhost, james, koonts, jk1, jk2)
-	mbhost,matt,belesi,mb1,mb2 = runcheck(mbhost, matt, belesi, mb1, mb2)
+	mbhost,matt,bell,mb1,mb2 = runcheck(mbhost, matt, bell, mb1, mb2)
