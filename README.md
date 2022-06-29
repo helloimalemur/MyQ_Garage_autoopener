@@ -4,11 +4,9 @@ Monitors for presence of specified IP address, such as a cell phone, and opens M
 
 
 1. pip install aiohttp pymyq
-2. place scripts in the same folder and replace "path to scripts" within checkhost.py and screen_checkhost.sh with this path
-3. Add/edit variables and commands at bottom/top of checkhost.py (see example below)
-4. add account info to close-garage.py and open-garage.py
-5. add webhook url in discord-notif.sh for discord notifications
-6. Cron starting and stopping using screen-checkhost.sh and screen-checkhost-stop.sh
+2. Add/edit variables and commands at bottom/top of main.py (see example below)
+3. add account info to closegarage.py and opengarage.py
+4. Cron starting and stopping using screen-checkhost.sh and screen-checkhost-stop.sh
   
   
   
