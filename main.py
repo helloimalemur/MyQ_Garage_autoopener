@@ -54,13 +54,6 @@ def open_garage():
 	opengarage.opengarage()
 
 
-def discord(string):
-	Message = string
-	Notif = "/home/foxx/.scripts/discord-notif.sh Garage "
-	Command = Notif + Message
-	os.system(str(Command))
-
-
 
 def runcheck(host, c2, c1, ct, dt):
 	time.sleep(3)
