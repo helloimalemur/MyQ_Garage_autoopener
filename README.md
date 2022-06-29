@@ -13,6 +13,11 @@ Monitors for presence of specified IP address, such as a cell phone, and opens M
 **example cron**;
 {0 1 * * * /<path to scripts>/screen-checkhost-stop.sh}
 {0 6 * * * /<path to scripts>/screen-checkhost.sh}
+
+**screen-checkhost.sh**
+#!/bin/bash  
+screen -XS checkhost quit
+screen -dmS checkhost bash -c "python3 /home/foxx/.scripts/checkhost.py"
   
 **example variables to add/edit in checkhost.py**;
 james = 1
