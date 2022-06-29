@@ -68,14 +68,12 @@ def runcheck(host, c2, c1, ct, dt):
 			printtime()
 			if timepassage(ct, dt, timethres):
 				print("opening garage")
-				discord("opening")
 				printtime()
 				open_garage()
 				print("---------------------")
 			else:
 				print("15 mins has not passed")
 				#print("opening garage")
-				#discord("opening")
 				print("Time passed:", ct - dt, " of", timethres)
 				printtime()
 				#open_garage()
