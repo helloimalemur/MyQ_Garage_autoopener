@@ -1,8 +1,8 @@
 #!/bin/python
-import opengarage
 import os
 import time
 import datetime
+import discordwh
 
 dtime = int(time.time())
 ctime = int(time.time())
@@ -26,7 +26,7 @@ mbhost = "10.0.0.212"
 
 
 # 300 for 5 mins
-timethres = 1800
+timethres = 900
 def timepassage(t1, t2, ts):
 	if t1 - t2 > ts:
 		return True
@@ -51,8 +51,7 @@ def check_host(x):
 
 
 def open_garage():
-	opengarage.opengarage()
-
+	os.system("python3 /home/foxx/.scripts/open-koonts-garage.py")
 
 
 def runcheck(host, c2, c1, ct, dt):
@@ -68,12 +67,17 @@ def runcheck(host, c2, c1, ct, dt):
 			printtime()
 			if timepassage(ct, dt, timethres):
 				print("opening garage")
+				message = "Opening Garage: " + str(cc) + " of " + str(timethres)
+				discordwh.discord_notif(message)
 				printtime()
 				open_garage()
 				print("---------------------")
 			else:
 				print("15 mins has not passed")
 				#print("opening garage")
+				cc = ct - dt
+				message = "Time Threshold not reached: " + str(cc) + " of " + str(timethres)
+				discordwh.discord_notif(message)
 				print("Time passed:", ct - dt, " of", timethres)
 				printtime()
 				#open_garage()
