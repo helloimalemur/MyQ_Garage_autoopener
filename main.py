@@ -3,7 +3,7 @@ import os
 import time
 import datetime
 import discordwh
-import opengarage
+import garagecontrol
 
 # set connection and disconnection time variables
 dtime = int(time.time())
@@ -19,6 +19,7 @@ jkhost = "10.0.0.203"
 # set time requirement between disconnect and reconnect
 # 300 for 5 mins
 timethres = 900
+#timethres = 9
 
 
 def timepassage(t1, t2, ts): #verify time requirement threshold has passed
@@ -60,11 +61,12 @@ def runcheck(host, c2, c1, ct, dt):
 			print("Device connected", host)
 			printtime()
 			if timepassage(ct, dt, timethres): # verify time threshold has passed since last disconnection
-				# print("opening garage")
+				print("opening garage")
+				cc = ct - dt
 				message = "Opening Garage: " + str(cc) + " of " + str(timethres)
 				#discordwh.discord_notif(message)
 				printtime()
-				opengarage.opengarage()
+				garagecontrol.opengarage()
 				print("---------------------")
 			else:
 				print("15 mins has not passed")

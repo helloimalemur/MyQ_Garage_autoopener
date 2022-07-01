@@ -3,7 +3,7 @@ Monitors for presence of specified IP address, such as a cell phone, and opens M
 
 
 
-1. pip install aiohttp pymyq requests
+1. pip install aiohttp pymyq requests asyncio
 2. Add/edit variables and commands at bottom/top of main.py (see example below)
 3. add account info to closegarage.py and opengarage.py
   
