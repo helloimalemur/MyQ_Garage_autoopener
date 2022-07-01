@@ -21,7 +21,7 @@ jkhost = "10.0.0.203"
 timethres = 900
 
 
-def timepassage(t1, t2, ts):
+def timepassage(t1, t2, ts): #verify time requirement threshold has passed
 	if t1 - t2 > ts:
 		return True
 	else:
