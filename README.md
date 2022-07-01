@@ -5,7 +5,7 @@ Monitors for presence of specified IP address, such as a cell phone, and opens M
 
 1. pip install aiohttp pymyq requests asyncio
 2. Add/edit variables and commands at bottom/top of main.py (see example below)
-3. add account info to closegarage.py and opengarage.py
+3. add account info to garagecontrol.py
   
   
   
@@ -17,17 +17,4 @@ Monitors for presence of specified IP address, such as a cell phone, and opens M
 **screen-checkhost.sh**
 #!/bin/bash  
 screen -XS checkhost quit
-screen -dmS checkhost bash -c "python3 /home/foxx/.scripts/checkhost.py"
-  
-**example variables to add/edit in checkhost.py**;
-james = 1
-koonts = 1
-jk1 = ctime
-jk2 = dtime
-jkhost = "10.0.0.203"
-  
-**command to be placed at bottom**;
-(jkhost,james,koonts,jk1,jk2 = runcheck(jkhost, james, koonts, jk1, jk2)
-  
-  
-  
+screen -dmS checkhost bash -c "python3 /home/foxx/.scripts/MyQ_Garage_autoopener/main.py"
