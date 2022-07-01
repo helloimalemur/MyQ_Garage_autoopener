@@ -5,30 +5,36 @@ import datetime
 import discordwh
 import opengarage
 
+#set connection and disconnection time variables
 dtime = int(time.time())
 ctime = int(time.time())
 
+#set device variables
 james = 1
 ktz = 1
 jk1 = ctime
 jk2 = dtime
 jkhost = "10.0.0.203"
 
-
+#set time requirement between disconnect and reconnect
 # 300 for 5 mins
 timethres = 900
+
+
 def timepassage(t1, t2, ts):
 	if t1 - t2 > ts:
 		return True
 	else:
 		return False
 
+
+#print current time
 def printtime():
 	now = datetime.datetime.now()
 	current_time = now.strftime("%H:%M:%S")
 	print("Current Time =", current_time)
 
-
+#check whether host is active, return 1 if up 0 if down
 def check_host(x):
 	hostname = x
 	response = os.system("ping -c1 -w2 " + hostname + ">/dev/null 2>&1")
@@ -39,20 +45,22 @@ def check_host(x):
 		up = 1
 	return up
 
-
+#monitor changes in connection
+#runcheck(hostname,newcheck,oldcheck,connectiontime,disconnectiontime)
+#returns variables to retain globally
 def runcheck(host, c2, c1, ct, dt):
 	time.sleep(3)
 	nc = check_host(host)
-	c2 = nc
-	if c1 != c2 and c2 == 1:
+	c2 = nc #check host state and set c2 as current state
+	if c1 != c2 and c2 == 1: #if old check c1 doesn't equal new check c2, and new check c2 returns host as up, fire.
 		print("---------------------")
-		c1 = c2
-		ct = time.time()
-		if c2 == 1:
+		c1 = c2 #old check = current check
+		ct = time.time() #grab current time
+		if c2 == 1: #double check current state is up
 			print("Device connected", host)
 			printtime()
-			if timepassage(ct, dt, timethres):
-				print("opening garage")
+			if timepassage(ct, dt, timethres): #verify time threshold has passed since last disconnection
+				# print("opening garage")
 				message = "Opening Garage: " + str(cc) + " of " + str(timethres)
 				#discordwh.discord_notif(message)
 				printtime()
@@ -83,3 +91,4 @@ def runcheck(host, c2, c1, ct, dt):
 
 while True:
 	jkhost,james,ktz,jk1,jk2 = runcheck(jkhost, james, ktz, jk1, jk2)
+	#set tupled variables as their returned values, allowing us to pass new values in on each loop
